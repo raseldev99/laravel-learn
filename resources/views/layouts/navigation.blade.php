@@ -18,7 +18,19 @@
                 </div>
             </div>
             <div>
-                <h1 class="text-white uppercase text-xl">{{ Auth::user()->name }}</h1>
+                <h1 class="text-white uppercase text-lgss flex items-center">{{ Auth::user()->name }}
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <x-nav-link :href="route('logout')"
+                                               onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="inline-block w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                            </svg>
+                        </x-nav-link>
+                    </form>
+                </h1>
             </div>
         </div>
     </div>
