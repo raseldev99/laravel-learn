@@ -40,10 +40,10 @@ class PersonalInfoController extends Controller
         $persons->save();
          $flasher->addSuccess('Person has been saved successfully!');
 
-         $personsNotify = Auth::user();R
+         $personsNotify = Auth::user();
 
          $personsNotify->notify(new PorsonsNotification($persons));
-        return Redirect::to('persons');R
+        return Redirect::to('persons');
     }
 
     public function show(){
