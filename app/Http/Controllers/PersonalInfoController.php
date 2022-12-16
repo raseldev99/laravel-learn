@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\PersonalInfo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Flasher\Prime\FlasherInterface;
+use App\Notifications\PorsonsNotification;
 
 class PersonalInfoController extends Controller
 {
@@ -37,7 +39,11 @@ class PersonalInfoController extends Controller
 
         $persons->save();
          $flasher->addSuccess('Person has been saved successfully!');
-        return Redirect::to('persons');
+
+         $personsNotify = Auth::user();R
+
+         $personsNotify->notify(new PorsonsNotification($persons));
+        return Redirect::to('persons');R
     }
 
     public function show(){
